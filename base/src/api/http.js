@@ -8,8 +8,7 @@ const http = Axios.create({
 });
 
 // 设置post请求头
-http.defaults.headers.post["Content-Type"] =
-  "application/x-www-form-urlencoded";
+http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
 
 // 添加请求拦截器
 http.interceptors.request.use(

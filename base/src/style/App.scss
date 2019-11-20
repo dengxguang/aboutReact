@@ -1,5 +1,4 @@
-// 仅支持 chrome 滚动条样式
-
+/*仅支持 chrome 滚动条样式*/
 /*定义滚动条高度以及背景，高宽分别对应横竖滚动条的尺寸*/
 ::-webkit-scrollbar {
   width: 5px;
@@ -14,7 +13,7 @@
 /*定义滑块内阴影和圆角*/
 ::-webkit-scrollbar-thumb {
   border-radius: 10px;
-  box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   background-color: #ccc;
 }
 
@@ -23,5 +22,5 @@
   margin-bottom: 1rem;
   padding: 1.5rem;
   border-radius: 5px;
-  box-shadow: 0 2px 13px 0 rgba(228,228,228,0.3);
+  box-shadow: 0 2px 13px 0 rgba(228, 228, 228, 0.3);
 }

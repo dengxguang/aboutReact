@@ -6,7 +6,7 @@
  *       2、设置通用原子类
  */
 
- /* 防止用户自定义背景颜色对网页的影响，添加让用户可以自定义字体 */
+/* 防止用户自定义背景颜色对网页的影响，添加让用户可以自定义字体 */
 html {
   background: white;
   color: black;
@@ -154,7 +154,7 @@ h3 {
 
 q:before,
 q:after {
-  content: '';
+  content: "";
 }
 
 /* 统一上标和下标 */
@@ -174,10 +174,12 @@ sub {
   bottom: -0.25em;
 }
 
-// /* 让链接在 hover 状态下显示下划线 */
-// a:hover {
-//     text-decoration: underline;
-// }
+/* 让链接在 hover 状态下显示下划线 */
+/*
+ a:hover {
+     text-decoration: underline;
+}
+ */
 
 /* 默认不显示下划线，保持页面简洁 */
 ins,
@@ -194,7 +196,7 @@ a:focus,
 /* 清除浮动 */
 .clearfix:before,
 .clearfix:after {
-  content: '';
+  content: "";
   display: block;
 }
 
