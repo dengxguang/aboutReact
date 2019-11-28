@@ -1,6 +1,7 @@
 .login {
   background: url("../../assets/images/login.jpg") no-repeat;
   background-size: cover;
+  // background: skyblue;
 
   .model {
     height: 100vh;
@@ -8,7 +9,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(245, 245, 221, 0.8);
+    background-color: rgba(141, 177, 218, 0.8);
 
     .login-form {
       padding: 2rem;

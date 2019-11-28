@@ -1,14 +1,5 @@
 import React, { Component } from "react";
-import {
-  Layout,
-  Input,
-  Icon,
-  Form,
-  Button,
-  Divider,
-  message,
-  notification
-} from "antd";
+import { Layout, Input, Icon, Form, Button, Divider, message, notification } from "antd";
 import { withRouter } from "react-router-dom";
 import "./login.scss";
 
@@ -27,7 +18,7 @@ class Login extends Component {
     this.props.form.validateFields((err, values) => {
       if (!err) {
         // 这里可以做权限校验，模拟接口返回用户权限标识
-        switch (value.username) {
+        switch (values.username) {
           case "admin":
             values.auth = 0;
             break;
@@ -71,35 +62,15 @@ class Login extends Component {
               <Form.Item>
                 {getFieldDecorator("username", {
                   rules: [{ required: true, message: "请输入用户名" }]
-                })(
-                  <Input
-                    prefix={
-                      <Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />
-                    }
-                    placeholder="用户名"
-                  />
-                )}
+                })(<Input prefix={<Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />} placeholder="用户名" />)}
               </Form.Item>
               <Form.Item>
                 {getFieldDecorator("password", {
                   rules: [{ required: true, message: "请输入密码" }]
-                })(
-                  <Input
-                    prefix={
-                      <Icon type="lock" style={{ color: "rgba(0,0,0,.25)" }} />
-                    }
-                    placeholder="密码"
-                    type="password"
-                  />
-                )}
+                })(<Input prefix={<Icon type="lock" style={{ color: "rgba(0,0,0,.25)" }} />} placeholder="密码" type="password" />)}
               </Form.Item>
               <Form.Item>
-                <Button
-                  type="primary"
-                  htmlType="submit"
-                  className="login-form-button"
-                  loading={this.state.loading}
-                >
+                <Button type="primary" htmlType="submit" className="login-form-button" loading={this.state.loading}>
                   登录
                 </Button>
               </Form.Item>

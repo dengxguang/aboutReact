@@ -9,4 +9,4 @@ const AppView = (
   </Provider>
 );
 
-ReactDOM.render(<AppView />, document.getElementById("root"));
+ReactDOM.render(AppView, document.getElementById("root"));

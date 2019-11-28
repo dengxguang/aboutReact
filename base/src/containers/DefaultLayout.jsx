@@ -4,8 +4,8 @@ import { connect } from "react-redux";
 import { Layout, BackTop, message } from "antd";
 import routes from "@/routes";
 import { menuToggleAction } from "@/store/actionCreators";
-import echarts from "echarts/lib/echarts";
-import avatar from "@/assets/images/user.jpg";
+// import echarts from "echarts/lib/echarts";
+// import avatar from "@/assets/images/user.jpg";
 import menu from "./menu";
 import "@/style/layout.scss";
 
@@ -16,7 +16,7 @@ import AppFooter from "./AppFooter.jsx";
 const { Content } = Layout;
 
 class DefaultLayout extends Component {
-  state = { avatar, show: true, menu: [] };
+  state = { avatar:"", show: true, menu: [] };
 
   isLogin = () => {
     if (!localStorage.getItem("user")) {
@@ -50,20 +50,20 @@ class DefaultLayout extends Component {
   }
 
   componentDidUpdate() {
-    let { pathname } = this.props.location;
+    // let { pathname } = this.props.location;
 
-    // 菜单收缩展开时 echarts 图表自适应
-    if (pathname === "/" || pathname === "/index") {
-      this.timer = setTimeout(() => {
-        echarts.init(document.getElementById("bar")).resize();
-        echarts.init(document.getElementById("line")).resize();
-        echarts.init(document.getElementById("pie")).resize();
-        echarts.init(document.getElementById("pictorialBar")).resize();
-        echarts.init(document.getElementById("scatter")).resize();
-      }, 500);
-    } else {
-      this.timer = null;
-    }
+    // // 菜单收缩展开时 echarts 图表自适应
+    // if (pathname === "/" || pathname === "/index") {
+    //   this.timer = setTimeout(() => {
+    //     echarts.init(document.getElementById("bar")).resize();
+    //     echarts.init(document.getElementById("line")).resize();
+    //     echarts.init(document.getElementById("pie")).resize();
+    //     echarts.init(document.getElementById("pictorialBar")).resize();
+    //     echarts.init(document.getElementById("scatter")).resize();
+    //   }, 500);
+    // } else {
+    //   this.timer = null;
+    // }
   }
 
   componentWillUnmount() {
@@ -72,9 +72,7 @@ class DefaultLayout extends Component {
 
   render() {
     let { menuClick, menuToggle } = this.props;
-    let { auth } = JSON.parse(localStorage.getItem("user"))
-      ? JSON.parse(localStorage.getItem("user"))
-      : "";
+    let { auth } = JSON.parse(localStorage.getItem("user")) ? JSON.parse(localStorage.getItem("user")) : "";
     return (
       <Layout className="app">
         <BackTop />
@@ -85,13 +83,7 @@ class DefaultLayout extends Component {
             minHeight: "100vh"
           }}
         >
-          <AppHeader
-            menuToggle={menuToggle}
-            menuClick={menuClick}
-            avatar={this.state.avatar}
-            show={this.state.show}
-            loginOut={this.loginOut}
-          />
+          <AppHeader menuToggle={menuToggle} menuClick={menuClick} avatar={this.state.avatar} show={this.state.show} loginOut={this.loginOut} />
           <Content className="content">
             <Switch>
               {routes.map(item => {
@@ -107,7 +99,7 @@ class DefaultLayout extends Component {
                         <item.componeht {...props} />
                       ) : (
                         // 这里可以跳转到 403 页面
-                        <Redirect to="/404" {...props0} />
+                        <Redirect to="/404" {...props} />
                       )
                     }
                   ></Route>
