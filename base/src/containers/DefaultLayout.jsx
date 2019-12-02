@@ -4,8 +4,8 @@ import { connect } from "react-redux";
 import { Layout, BackTop, message } from "antd";
 import routes from "@/routes";
 import { menuToggleAction } from "@/store/actionCreators";
-// import echarts from "echarts/lib/echarts";
-// import avatar from "@/assets/images/user.jpg";
+import echarts from "echarts/lib/echarts";
+import avatar from "@/assets/images/user.jpg";
 import menu from "./menu";
 import "@/style/layout.scss";
 
@@ -16,7 +16,11 @@ import AppFooter from "./AppFooter.jsx";
 const { Content } = Layout;
 
 class DefaultLayout extends Component {
-  state = { avatar:"", show: true, menu: [] };
+  state = {
+    avatar,
+    show: true,
+    menu: []
+  };
 
   isLogin = () => {
     if (!localStorage.getItem("user")) {
@@ -31,9 +35,8 @@ class DefaultLayout extends Component {
   loginOut = () => {
     localStorage.clear();
     this.props.history.push("/login");
-    message.success("登出成功！");
+    message.success("登出成功!");
   };
-
   getMenu = menu => {
     let newMenu,
       auth = JSON.parse(localStorage.getItem("user")).auth;
@@ -50,20 +53,20 @@ class DefaultLayout extends Component {
   }
 
   componentDidUpdate() {
-    // let { pathname } = this.props.location;
+    let { pathname } = this.props.location;
 
-    // // 菜单收缩展开时 echarts 图表自适应
-    // if (pathname === "/" || pathname === "/index") {
-    //   this.timer = setTimeout(() => {
-    //     echarts.init(document.getElementById("bar")).resize();
-    //     echarts.init(document.getElementById("line")).resize();
-    //     echarts.init(document.getElementById("pie")).resize();
-    //     echarts.init(document.getElementById("pictorialBar")).resize();
-    //     echarts.init(document.getElementById("scatter")).resize();
-    //   }, 500);
-    // } else {
-    //   this.timer = null;
-    // }
+    // 菜单收缩展开时 echarts 图表的自适应
+    if (pathname === "/" || pathname === "/index") {
+      this.timer = setTimeout(() => {
+        echarts.init(document.getElementById("bar")).resize();
+        echarts.init(document.getElementById("line")).resize();
+        echarts.init(document.getElementById("pie")).resize();
+        echarts.init(document.getElementById("pictorialBar")).resize();
+        echarts.init(document.getElementById("scatter")).resize();
+      }, 500);
+    } else {
+      this.timer = null;
+    }
   }
 
   componentWillUnmount() {
@@ -77,12 +80,7 @@ class DefaultLayout extends Component {
       <Layout className="app">
         <BackTop />
         <AppAside menuToggle={menuToggle} menu={this.state.menu} />
-        <Layout
-          style={{
-            marginLeft: menuToggle ? "80px" : "200px",
-            minHeight: "100vh"
-          }}
-        >
+        <Layout style={{ marginLeft: menuToggle ? "80px" : "200px", minHeight: "100vh" }}>
           <AppHeader menuToggle={menuToggle} menuClick={menuClick} avatar={this.state.avatar} show={this.state.show} loginOut={this.loginOut} />
           <Content className="content">
             <Switch>
@@ -94,11 +92,11 @@ class DefaultLayout extends Component {
                     exact={item.exact}
                     render={props =>
                       !auth ? (
-                        <item.componeht {...props} />
+                        <item.component {...props} />
                       ) : item.auth && item.auth.indexOf(auth) !== -1 ? (
-                        <item.componeht {...props} />
+                        <item.component {...props} />
                       ) : (
-                        // 这里可以跳转到 403 页面
+                        // 这里也可以跳转到 403 页面
                         <Redirect to="/404" {...props} />
                       )
                     }
@@ -121,7 +119,7 @@ const stateToProp = state => ({
 
 const dispatchToProp = dispatch => ({
   menuClick() {
-    dispatch(menuToggleAction);
+    dispatch(menuToggleAction());
   }
 });
 
