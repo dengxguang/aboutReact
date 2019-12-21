@@ -1,0 +1,14 @@
+concat
+join  数组->字符串
+pop
+push
+shift
+unshift
+reverse
+sort
+slice
+aplice
+toString
+indexOf
+find 
+...

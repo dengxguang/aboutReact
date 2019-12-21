@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>三角形扇形梯形</title>
+  <style>
+    /* 半圆 */
+    .half-circle {
+      height: 25px;
+      width: 50px;
+      border-radius: 50px 50px 0 0;
+      background-color: skyblue;
+    }
+
+    /* 扇形 */
+    .sector {
+      height: 50px;
+      width: 50px;
+      border-radius: 100px 0 0;
+      background-color: black;
+    }
+
+    /* 三角 */
+    .triangle {
+      width: 0px;
+      height: 0px;
+      background: none;
+      border: 50px solid red;
+      border-color: red transparent transparent transparent;
+    }
+
+    /* 梯形 */
+    .ladder {
+      width: 50px;
+      height: 0px;
+      background: none;
+      border: 50px solid red;
+      border-color: red transparent transparent transparent;
+    }
+  </style>
+</head>
+
+<body>
+  半圆: <div class="half-circle"></div>
+  扇形：<div class="sector"></div>
+  三角形：<div class="triangle"></div>
+  梯形：<div class="ladder"></div>
+</body>
+
+</html>
